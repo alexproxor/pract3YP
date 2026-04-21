@@ -127,7 +127,7 @@ TASKS = [
     {
         "code": "4",
         "name": "Разработка",
-        "duration": "240",
+        "duration": "80",
         "assignee": "Команда разработки",
         "predecessor": "3",
         "link_type": "FS",
@@ -175,7 +175,7 @@ TASKS = [
     {
         "code": "5",
         "name": "Тестирование и контроль качества",
-        "duration": "96",
+        "duration": "80",
         "assignee": "Команда QA",
         "predecessor": "4",
         "link_type": "SS",

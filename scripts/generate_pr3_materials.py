@@ -319,6 +319,7 @@ DEPENDENCY_ROWS = [
 ]
 
 NON_SIMULTANEOUS_ROWS = [
+    ("2.1", "2.2"),
     ("6.2", "6.4"),
     ("6.3", "6.4"),
 ]
@@ -337,6 +338,145 @@ CALENDAR_ROWS = [
         "В течение 5 рабочих дней после завершения пилотной эксплуатации и устранения критических замечаний.",
     ),
 ]
+
+EXPERT_PLACEHOLDERS = [
+    "[Фамилия И.О. эксперта 1]",
+    "[Фамилия И.О. эксперта 2]",
+    "[Фамилия И.О. эксперта 3]",
+]
+
+RESOURCE_ASSIGNMENTS = {
+    "1.1": {
+        "labor": "- Руководитель проекта - 0,5 чел.\n- Бизнес-аналитик - 0,25 чел.",
+        "material": "Канцелярские материалы, шаблон устава проекта.",
+        "fixed": "8 тыс. руб.",
+    },
+    "1.2": {
+        "labor": "- Руководитель проекта - 0,5 чел.\n- Представитель заказчика - 0,25 чел.",
+        "material": "Материалы стратегической сессии, шаблоны целей и KPI.",
+        "fixed": "10 тыс. руб.",
+    },
+    "1.3": {
+        "labor": "- Руководитель проекта - 0,5 чел.\n- Финансовый аналитик - 0,25 чел.",
+        "material": "Шаблоны календарного плана, реестр рисков.",
+        "fixed": "12 тыс. руб.",
+    },
+    "2.1": {
+        "labor": "- Бизнес-аналитик - 1 чел.\n- Системный аналитик - 0,5 чел.",
+        "material": "Опросные листы, средства записи интервью, рабочие тетради обследования.",
+        "fixed": "15 тыс. руб.",
+    },
+    "2.2": {
+        "labor": "- Бизнес-аналитик - 1 чел.",
+        "material": "Шаблоны BPMN/AS-IS диаграмм, канцелярские материалы.",
+        "fixed": "8 тыс. руб.",
+    },
+    "2.3": {
+        "labor": "- Системный аналитик - 1 чел.\n- Бизнес-аналитик - 0,5 чел.",
+        "material": "Шаблон спецификации требований, реестр требований.",
+        "fixed": "10 тыс. руб.",
+    },
+    "3.1": {
+        "labor": "- Системный архитектор - 1 чел.\n- Системный аналитик - 0,5 чел.",
+        "material": "Средства моделирования архитектуры, репозиторий проектных решений.",
+        "fixed": "20 тыс. руб.",
+    },
+    "3.2": {
+        "labor": "- Архитектор БД - 1 чел.",
+        "material": "Шаблоны ER-диаграмм, модель данных, справочники предметной области.",
+        "fixed": "12 тыс. руб.",
+    },
+    "3.3": {
+        "labor": "- UX/UI-дизайнер - 1 чел.",
+        "material": "Дизайн-система, библиотека компонентов, прототипы экранов.",
+        "fixed": "18 тыс. руб.",
+    },
+    "3.4": {
+        "labor": "- Системный аналитик - 1 чел.\n- Руководитель проекта - 0,25 чел.",
+        "material": "Утвержденный шаблон ТЗ, комплект исходных требований.",
+        "fixed": "8 тыс. руб.",
+    },
+    "4.1": {
+        "labor": "- Backend-разработчик - 1 чел.\n- Системный аналитик - 0,25 чел.",
+        "material": "Среда разработки, тестовый сервер, репозиторий исходного кода.",
+        "fixed": "35 тыс. руб.",
+    },
+    "4.2": {
+        "labor": "- Frontend-разработчик - 1 чел.",
+        "material": "UI-kit, тестовое мобильное устройство, макеты интерфейсов.",
+        "fixed": "28 тыс. руб.",
+    },
+    "4.3": {
+        "labor": "- Backend-разработчик - 0,5 чел.\n- Frontend-разработчик - 0,5 чел.",
+        "material": "Тестовые учетные записи, сервер приложений, API-спецификация.",
+        "fixed": "30 тыс. руб.",
+    },
+    "4.4": {
+        "labor": "- Backend-разработчик - 0,5 чел.\n- Инженер по интеграциям - 0,5 чел.",
+        "material": "Тестовый SMS-шлюз, учетная запись почтового сервиса, шаблоны уведомлений.",
+        "fixed": "25 тыс. руб.",
+    },
+    "4.5": {
+        "labor": "- BI-аналитик - 0,5 чел.\n- Backend-разработчик - 0,5 чел.",
+        "material": "Тестовый набор данных, шаблоны отчетов и дашбордов.",
+        "fixed": "20 тыс. руб.",
+    },
+    "5.1": {
+        "labor": "- Тестировщик - 1 чел.",
+        "material": "Шаблоны тест-кейсов, чек-листы приемки.",
+        "fixed": "8 тыс. руб.",
+    },
+    "5.2": {
+        "labor": "- Тестировщик - 1 чел.\n- Системный аналитик - 0,25 чел.",
+        "material": "Тестовый стенд, баг-трекер, комплект тестовых сценариев.",
+        "fixed": "18 тыс. руб.",
+    },
+    "5.3": {
+        "labor": "- Инженер по нагрузочному тестированию - 0,5 чел.\n- DevOps-инженер - 0,25 чел.",
+        "material": "Инструмент нагрузочного тестирования, выделенный тестовый контур.",
+        "fixed": "16 тыс. руб.",
+    },
+    "5.4": {
+        "labor": "- Тестировщик - 0,5 чел.\n- Разработчик - 0,5 чел.",
+        "material": "Журнал дефектов, отчеты о тестировании, регрессионный набор.",
+        "fixed": "12 тыс. руб.",
+    },
+    "6.1": {
+        "labor": "- DevOps-инженер - 1 чел.",
+        "material": "Облачная виртуальная машина, скрипты развертывания, сертификаты доступа.",
+        "fixed": "32 тыс. руб.",
+    },
+    "6.2": {
+        "labor": "- Администратор БД - 0,5 чел.\n- DevOps-инженер - 0,5 чел.",
+        "material": "Скрипты миграции, резервные копии, хранилище данных.",
+        "fixed": "22 тыс. руб.",
+    },
+    "6.3": {
+        "labor": "- Руководитель проекта - 0,25 чел.\n- Бизнес-аналитик - 0,5 чел.",
+        "material": "Презентация обучения, инструкции пользователя, методические материалы.",
+        "fixed": "14 тыс. руб.",
+    },
+    "6.4": {
+        "labor": "- Руководитель проекта - 0,5 чел.\n- Специалист поддержки - 0,5 чел.\n- Разработчик - 0,25 чел.",
+        "material": "Пилотный контур, журнал замечаний, канал оперативной поддержки.",
+        "fixed": "24 тыс. руб.",
+    },
+    "7.1": {
+        "labor": "- Представитель заказчика - 0,25 чел.\n- Руководитель проекта - 0,25 чел.\n- Тестировщик - 0,25 чел.",
+        "material": "Протоколы испытаний, приемочные листы, комплект отчетных форм.",
+        "fixed": "8 тыс. руб.",
+    },
+    "7.2": {
+        "labor": "- DevOps-инженер - 0,5 чел.\n- Руководитель проекта - 0,25 чел.",
+        "material": "Релизный пакет, чек-лист публикации, эксплуатационная инструкция.",
+        "fixed": "10 тыс. руб.",
+    },
+    "7.3": {
+        "labor": "- Руководитель проекта - 0,25 чел.\n- Специалист сопровождения - 0,25 чел.",
+        "material": "Акт передачи, регламент сопровождения, архив проектной документации.",
+        "fixed": "8 тыс. руб.",
+    },
+}
 
 LINK_TYPE_EXPLANATION = {
     "FS": "окончание-начало",
@@ -400,6 +540,79 @@ def add_heading_paragraph(document: Document, text: str) -> None:
     run = paragraph.add_run(text)
     run.bold = True
     run.font.size = Inches(0.18)
+
+
+def add_subheading_paragraph(document: Document, text: str) -> None:
+    paragraph = document.add_paragraph()
+    run = paragraph.add_run(text)
+    run.bold = True
+
+
+def add_resource_sections(document: Document) -> None:
+    add_heading_paragraph(document, "Назначение ресурсов на выполняемые работы")
+    document.add_paragraph(
+        "На данном этапе выполняется назначение временных, трудовых, материальных и финансовых ресурсов "
+        "на работы проекта ИС «ЖКХ-Заявки»."
+    )
+
+    add_subheading_paragraph(document, "4.3.1. Временные ресурсы")
+    document.add_paragraph(
+        "Для оценки продолжительности работ использован метод оценки по аналогам. "
+        "В качестве экспертов необходимо указать не менее трех студентов группы."
+    )
+    document.add_paragraph("Эксперты для последующего заполнения отчета:")
+    for expert in EXPERT_PLACEHOLDERS:
+        document.add_paragraph(expert, style=None)
+
+    add_table_title(document, "Таблица 4.4")
+    duration_table = document.add_table(rows=1, cols=4)
+    duration_table.style = "Table Grid"
+    duration_headers = duration_table.rows[0].cells
+    duration_headers[0].text = "Номер работы"
+    duration_headers[1].text = "Продолжительность выполнения, ч"
+    duration_headers[2].text = "Номер работы"
+    duration_headers[3].text = "Продолжительность выполнения, ч"
+
+    midpoint = len(LEAF_TASKS) // 2
+    left_tasks = LEAF_TASKS[:midpoint]
+    right_tasks = LEAF_TASKS[midpoint:]
+    for idx in range(max(len(left_tasks), len(right_tasks))):
+        row = duration_table.add_row().cells
+        if idx < len(left_tasks):
+            row[0].text = left_tasks[idx]["code"]
+            row[1].text = left_tasks[idx]["duration"]
+        else:
+            row[0].text = ""
+            row[1].text = ""
+        if idx < len(right_tasks):
+            row[2].text = right_tasks[idx]["code"]
+            row[3].text = right_tasks[idx]["duration"]
+        else:
+            row[2].text = ""
+            row[3].text = ""
+
+    add_subheading_paragraph(document, "4.3.2. Трудовые, материальные и финансовые ресурсы")
+    document.add_paragraph(
+        "Для выполнения работ проекта определены трудовые ресурсы команды, используемые материалы "
+        "и фиксированные затраты. Итоговые назначения представлены в таблице 4.5."
+    )
+
+    add_table_title(document, "Таблица 4.5")
+    resource_table = document.add_table(rows=1, cols=4)
+    resource_table.style = "Table Grid"
+    resource_headers = resource_table.rows[0].cells
+    resource_headers[0].text = "Номер работы"
+    resource_headers[1].text = "Трудовые ресурсы"
+    resource_headers[2].text = "Материальные ресурсы"
+    resource_headers[3].text = "Фиксированные затраты"
+
+    for task in LEAF_TASKS:
+        assignment = RESOURCE_ASSIGNMENTS[task["code"]]
+        row = resource_table.add_row().cells
+        row[0].text = task["code"]
+        row[1].text = assignment["labor"]
+        row[2].text = assignment["material"]
+        row[3].text = assignment["fixed"]
 
 
 def add_appendix(document: Document) -> None:
@@ -470,6 +683,8 @@ def add_appendix(document: Document) -> None:
     document.add_paragraph()
     document.add_picture(str(GRAPH_PATH), width=Inches(7.0))
     add_figure_title(document, "Рисунок 1 - Сетевая модель проекта ИС «ЖКХ-Заявки»")
+    document.add_paragraph()
+    add_resource_sections(document)
 
 
 def create_graph() -> None:
@@ -678,6 +893,46 @@ def write_markdown() -> None:
     )
     for task in LEAF_TASKS:
         lines.append(f"| {task['code']} | {task_name_by_code[task['code']]} |")
+
+    lines.extend(
+        [
+            "",
+            "## 7. Назначение ресурсов на выполняемые работы",
+            "",
+            "### 7.1. Временные ресурсы",
+            "",
+            "Для оценки продолжительности работ использован метод оценки по аналогам.",
+            "Эксперты для заполнения отчета:",
+        ]
+    )
+    for expert in EXPERT_PLACEHOLDERS:
+        lines.append(f"- {expert}")
+
+    lines.extend(
+        [
+            "",
+            "| Номер работы | Продолжительность выполнения, ч |",
+            "|---|---:|",
+        ]
+    )
+    for task in LEAF_TASKS:
+        lines.append(f"| {task['code']} | {task['duration']} |")
+
+    lines.extend(
+        [
+            "",
+            "### 7.2. Трудовые, материальные и финансовые ресурсы",
+            "",
+            "| Номер работы | Трудовые ресурсы | Материальные ресурсы | Фиксированные затраты |",
+            "|---|---|---|---|",
+        ]
+    )
+    for task in LEAF_TASKS:
+        assignment = RESOURCE_ASSIGNMENTS[task["code"]]
+        labor = assignment["labor"].replace("\n", "<br>")
+        lines.append(
+            f"| {task['code']} | {labor} | {assignment['material']} | {assignment['fixed']} |"
+        )
 
     MARKDOWN_PATH.write_text("\n".join(lines) + "\n", encoding="utf-8")
 

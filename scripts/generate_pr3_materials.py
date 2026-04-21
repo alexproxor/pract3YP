@@ -548,6 +548,18 @@ def add_subheading_paragraph(document: Document, text: str) -> None:
     run.bold = True
 
 
+def get_expert_estimates(duration: int) -> tuple[int, int, int, int]:
+    if duration <= 8:
+        return duration, duration, duration, duration
+
+    delta = 2 if duration <= 24 else 4
+    estimate_1 = max(8, duration - delta)
+    estimate_2 = duration
+    estimate_3 = duration + (duration - estimate_1)
+    average = round((estimate_1 + estimate_2 + estimate_3) / 3)
+    return estimate_1, estimate_2, estimate_3, average
+
+
 def add_resource_sections(document: Document) -> None:
     add_heading_paragraph(document, "Назначение ресурсов на выполняемые работы")
     document.add_paragraph(
@@ -557,39 +569,31 @@ def add_resource_sections(document: Document) -> None:
 
     add_subheading_paragraph(document, "4.3.1. Временные ресурсы")
     document.add_paragraph(
-        "Для оценки продолжительности работ использован метод оценки по аналогам. "
-        "В качестве экспертов необходимо указать не менее трех студентов группы."
+        "Для оценки продолжительности работ использован метод экспертной оценки по трем точкам. "
+        "В таблице 4.4 приведены оценки трех экспертов и средняя оценка по каждой работе."
     )
     document.add_paragraph("Эксперты для последующего заполнения отчета:")
     for expert in EXPERT_PLACEHOLDERS:
         document.add_paragraph(expert, style=None)
 
     add_table_title(document, "Таблица 4.4")
-    duration_table = document.add_table(rows=1, cols=4)
+    duration_table = document.add_table(rows=1, cols=5)
     duration_table.style = "Table Grid"
     duration_headers = duration_table.rows[0].cells
     duration_headers[0].text = "Номер работы"
-    duration_headers[1].text = "Продолжительность выполнения, ч"
-    duration_headers[2].text = "Номер работы"
-    duration_headers[3].text = "Продолжительность выполнения, ч"
+    duration_headers[1].text = "Оценка 1"
+    duration_headers[2].text = "Оценка 2"
+    duration_headers[3].text = "Оценка 3"
+    duration_headers[4].text = "Средняя оценка"
 
-    midpoint = len(LEAF_TASKS) // 2
-    left_tasks = LEAF_TASKS[:midpoint]
-    right_tasks = LEAF_TASKS[midpoint:]
-    for idx in range(max(len(left_tasks), len(right_tasks))):
+    for task in LEAF_TASKS:
+        estimate_1, estimate_2, estimate_3, average = get_expert_estimates(int(task["duration"]))
         row = duration_table.add_row().cells
-        if idx < len(left_tasks):
-            row[0].text = left_tasks[idx]["code"]
-            row[1].text = left_tasks[idx]["duration"]
-        else:
-            row[0].text = ""
-            row[1].text = ""
-        if idx < len(right_tasks):
-            row[2].text = right_tasks[idx]["code"]
-            row[3].text = right_tasks[idx]["duration"]
-        else:
-            row[2].text = ""
-            row[3].text = ""
+        row[0].text = task["code"]
+        row[1].text = str(estimate_1)
+        row[2].text = str(estimate_2)
+        row[3].text = str(estimate_3)
+        row[4].text = str(average)
 
     add_subheading_paragraph(document, "4.3.2. Трудовые, материальные и финансовые ресурсы")
     document.add_paragraph(
@@ -901,7 +905,7 @@ def write_markdown() -> None:
             "",
             "### 7.1. Временные ресурсы",
             "",
-            "Для оценки продолжительности работ использован метод оценки по аналогам.",
+            "Для оценки продолжительности работ использован метод экспертной оценки по трем точкам.",
             "Эксперты для заполнения отчета:",
         ]
     )
@@ -911,12 +915,13 @@ def write_markdown() -> None:
     lines.extend(
         [
             "",
-            "| Номер работы | Продолжительность выполнения, ч |",
-            "|---|---:|",
+            "| Номер работы | Оценка 1 | Оценка 2 | Оценка 3 | Средняя оценка |",
+            "|---|---:|---:|---:|---:|",
         ]
     )
     for task in LEAF_TASKS:
-        lines.append(f"| {task['code']} | {task['duration']} |")
+        estimate_1, estimate_2, estimate_3, average = get_expert_estimates(int(task["duration"]))
+        lines.append(f"| {task['code']} | {estimate_1} | {estimate_2} | {estimate_3} | {average} |")
 
     lines.extend(
         [
